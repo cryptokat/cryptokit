@@ -218,7 +218,7 @@ class CoinserverRPC(object):
             raise CoinRPCException({
                 'code': -343, 'message': 'missing JSON-RPC error code'})
 
-        if response['error'] is not None:
+        if 'error' in response and response['error'] is not None:
             raise CoinRPCException(response['error'])
         elif 'result' not in response:
             raise CoinRPCException({
